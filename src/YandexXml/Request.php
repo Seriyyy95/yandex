@@ -774,6 +774,7 @@ class Request
             $res->url = (string)$group->doc->url;
             $res->domain = (string)$group->doc->domain;
             $res->title = isset($group->doc->title) ? Client::highlight($group->doc->title) : $res->url;
+	    $res->savedCopyUrl = isset($group->doc->{'saved-copy-url'}) ? $group->doc->{'saved-copy-url'} : null;
             $res->headline = isset($group->doc->headline) ? Client::highlight($group->doc->headline) : null;
 
             $passages = array();
@@ -883,12 +884,12 @@ class Request
         $xml->addChild('query', $query);
         $xml->addChild('page', $this->page);
 
-        $groupings = $xml->addChild('groupings');
-        $groupby = $groupings->addChild('groupby');
-        $groupby->addAttribute('attr', $this->groupBy);
-        $groupby->addAttribute('mode', $this->groupByMode);
-        $groupby->addAttribute('groups-on-page', $this->limit);
-        $groupby->addAttribute('docs-in-group', 1);
+//        $groupings = $xml->addChild('groupings');
+//        $groupby = $groupings->addChild('groupby');
+//        $groupby->addAttribute('attr', $this->groupBy);
+//        $groupby->addAttribute('mode', $this->groupByMode);
+//        $groupby->addAttribute('groups-on-page', $this->limit);
+//        $groupby->addAttribute('docs-in-group', 1);
 
         $xml->addChild('sortby', $this->sortBy);
         $xml->addChild('maxpassages', $this->options['maxpassages']);
